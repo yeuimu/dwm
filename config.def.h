@@ -46,6 +46,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[ﱖ]",      grid },    /* grid mode [3] */
 };
 
 /* key definitions */
@@ -113,6 +114,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY,                       XK_g,           setlayout,         {.v = &layouts[3]} },
 };
 
 /* button definitions */

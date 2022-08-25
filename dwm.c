@@ -61,6 +61,8 @@
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 #define TRUNC(X,A,B)            (MAX((A), MIN((X), (B))))
+#define HEIGHTG(gy, h)             ((float)(h) / (float)(gy))
+#define WIDTHG(gx, w)               ((float)(w) / (float)(gx)) 
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
@@ -249,6 +251,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
+static void grid(Monitor *);
 
 /* variables */
 static const char broken[] = "broken";
@@ -2275,6 +2278,54 @@ zoom(const Arg *arg)
 		if (!c || !(c = nexttiled(c->next)))
 			return;
 	pop(c);
+}
+
+void
+grid(Monitor *m)
+{
+    unsigned int item, number, iM, tmp;
+    unsigned int row, colum, yVar, xVar;
+    item = number = row = colum = yVar = xVar = iM = tmp = 0;
+
+    /* gaps between client and ones or client and window edge */
+    unsigned gap = 10;
+    unsigned int xConst = m->wx + gap/2;
+    unsigned int yConst = m->wy + gap/2;
+    unsigned int wConst = m->ww - gap;
+    unsigned int hConst = m->wh - gap;
+
+    Client *c;
+
+    for (number = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), number++);
+    if (number == 0)
+        return;
+
+    for( row = iM = 1, tmp = 2; number > tmp;) {
+        row = (iM%2==0 ? row : row + 1);
+        iM++;
+        tmp = (iM%2==0 ? row * row : row * (row + 1));
+    }
+    colum = (iM%2==0 ? row : row + 1);
+
+
+    if ( number == 1) {
+      resize(nexttiled(m->clients), m->wx, m->wy, m->ww, m->wh, 0);
+      } else {
+            for (item=0, c = nexttiled(m->clients); c; c = nexttiled(c->next), item++) {
+                number = item + 1;
+                if ( number <= colum) {
+                    xVar = WIDTHG(colum, wConst) * (number - 1);
+                    yVar = 0;
+                }else if ( number%colum == 0 ) {
+                   xVar = WIDTHG(colum, wConst) * (colum - 1);
+                   yVar = HEIGHTG(row, hConst) * ((number / colum) - 1);
+                } else {
+                    xVar = WIDTHG(colum, wConst) * (number%colum - 1);
+                    yVar = HEIGHTG(row, hConst) * ((number - number%colum) / colum);
+                }
+                resize(c, xConst + gap/2 + xVar, yConst + gap/2 + yVar, (wConst / colum) - gap , (hConst / row) -gap, 0);
+        }
+    }
 }
 
 int
