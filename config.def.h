@@ -5,7 +5,11 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "JetBrains Mono:pixelsize=30:antialias=true:autohint=true:fixed=true",
+					                    "WenQuanYi Micro Hei Mono:size=10;type=Regular:antialias=true:autohint=true",
+					                    "Symbols Nerd Font:pixelsize=30:type=2048-em:antialias=true:autohint=true",
+					                    "JoyPixels:pixelsize=30:type=2048-em:antialias=true:autohint=true"};
+
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -24,7 +28,8 @@ static const unsigned int igappx = gap;        /* size of inner gaps */
 static const unsigned int ogappx = gap;        /* size of outer gaps */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", " ", "", "", " ", "ﱘ ", " ", " ", " " };
+
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -134,5 +139,11 @@ static const Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+    { 0,                            0x1008ff11,        spawn,             SHCMD("amixer sset Master 5%-")},
+	{ 0,                            0x1008ff13,        spawn,             SHCMD("amixer sset Master 5%+")},
+	{ 0,                            0x1008ff12,        spawn,             SHCMD("amixer sset Master toggle")},
+	{ 0,                            0x1008ff02,        spawn,             SHCMD("sudo light -A 5")},
+	{ 0,                            0x1008ffb2,        spawn,             SHCMD("sudo light -U 5")},
+
 };
 
