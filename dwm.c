@@ -430,8 +430,20 @@ arrangemon(Monitor *m)
 void
 attach(Client *c)
 {
+    if (isattachtail) {
+        Client *cOldHead = NULL;
+        if(c->mon->clients) {
+            for(cOldHead = c->mon->clients; cOldHead->next; cOldHead = cOldHead->next);
+            c->next = NULL;
+            cOldHead->next = c;
+        } else {
+            c->next = NULL;
+            c->mon->clients = c;
+        }
+    } else {
 	c->next = c->mon->clients;
 	c->mon->clients = c;
+    }
 }
 
 void

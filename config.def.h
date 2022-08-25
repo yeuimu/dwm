@@ -20,11 +20,14 @@ static const char *colors[][3]      = {
 
 /* gap */
 static const unsigned int gap    = 15;
-static const unsigned int igappx = gap;        /* size of inner gaps */
-static const unsigned int ogappx = gap;        /* size of outer gaps */
+static const unsigned int igappx = gap;        /* size of inner gaps on tile mode*/
+static const unsigned int ogappx = gap;        /* size of outer gaps on tile mode*/
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+unsigned int isattachtail = 1;
 
 static const Rule rules[] = {
 	/* xprop(1):
