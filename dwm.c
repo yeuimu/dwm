@@ -2315,7 +2315,8 @@ grid(Monitor *m)
 
 
     if ( number == 1) {
-      resize(nexttiled(m->clients), m->wx, m->wy, m->ww, m->wh, 0);
+        resize(nexttiled(m->clients), xConst + gap/2, yConst + gap/2, wConst - gap , hConst-gap, 0);
+        //resize(nexttiled(m->clients), m->wx, m->wy, m->ww, m->wh, 0);
       } else {
             for (item=0, c = nexttiled(m->clients); c; c = nexttiled(c->next), item++) {
                 number = item + 1;
