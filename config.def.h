@@ -122,6 +122,11 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,                       XK_g,           setlayout,         {.v = &layouts[3]} },
+    { 0,                            0x1008ff11,        spawn,             SHCMD("amixer sset Master 5%-")},
+	{ 0,                            0x1008ff13,        spawn,             SHCMD("amixer sset Master 5%+")},
+	{ 0,                            0x1008ff12,        spawn,             SHCMD("amixer sset Master toggle")},
+	{ 0,                            0x1008ff02,        spawn,             SHCMD("sudo light -A 5")},
+	{ 0,                            0x1008ffb2,        spawn,             SHCMD("sudo light -U 5")},
 };
 
 /* button definitions */
@@ -139,11 +144,5 @@ static const Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-    { 0,                            0x1008ff11,        spawn,             SHCMD("amixer sset Master 5%-")},
-	{ 0,                            0x1008ff13,        spawn,             SHCMD("amixer sset Master 5%+")},
-	{ 0,                            0x1008ff12,        spawn,             SHCMD("amixer sset Master toggle")},
-	{ 0,                            0x1008ff02,        spawn,             SHCMD("sudo light -A 5")},
-	{ 0,                            0x1008ffb2,        spawn,             SHCMD("sudo light -U 5")},
-
 };
 
