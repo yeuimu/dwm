@@ -2283,7 +2283,6 @@ grid(Monitor *m)
     item = number = row = colum = yVar = xVar = iM = tmp = 0;
 
     /* gaps between client and ones or client and window edge */
-    unsigned gap = 10;
     unsigned int xConst = m->wx + gap/2;
     unsigned int yConst = m->wy + gap/2;
     unsigned int wConst = m->ww - gap;
