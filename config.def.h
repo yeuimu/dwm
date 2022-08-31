@@ -5,10 +5,15 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono:pixelsize=30:antialias=true:autohint=true:fixed=true",
+static const char *fonts[]          = { "JetBrains Mono:pixelsize=25:antialias=true:autohint=true:fixed=true",
 					                    "WenQuanYi Micro Hei Mono:size=10;type=Regular:antialias=true:autohint=true",
-					                    "Symbols Nerd Font:pixelsize=30:type=2048-em:antialias=true:autohint=true",
-					                    "JoyPixels:pixelsize=30:type=2048-em:antialias=true:autohint=true"};
+					                    //"Symbols Nerd Font:pixelsize=30:type=2048-em:antialias=true:autohint=true",
+					                    "Font Awesome 6 Free:style=Regular:pixelsize=25:antialias=true:autohint=true",
+					                    "Font Awesome 6 Brands:style=Regular:pixelsize=25:antialias=true:autohint=true",
+					                    "Font Awesome 6 Pro:style=Regular:pixelsize=25:antialias=true:autohint=true",
+					                    "Font Awesome v4 Compatibility:style=Regular:pixelsize=25:antialias=true:autohint=true",
+					                    //"JoyPixels:pixelsize=30:type=2048-em:antialias=true:autohint=true",
+                                        };
 
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
@@ -29,7 +34,7 @@ static const unsigned int ogappx = gap;        /* size of outer gaps on tile mod
 
 
 /* tagging */
-static const char *tags[] = { "", " ", "", "", " ", "ﱘ ", " ", " ", " " };
+static const char *tags[] = { " ","  " ,"  " };
 
 
 unsigned int isattachtail = 1;
@@ -53,10 +58,10 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
-	{ "[ﱖ]",      grid },    /* grid mode [3] */
+	{ "  ",      tile },    /* first entry is default */
+	{ " ",      NULL },    /* no layout function means floating behavior */
+	{ " ",      monocle },
+	{ " ",      grid },    /* grid mode [3] */
 };
 
 /* key definitions */
