@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
@@ -22,11 +22,11 @@ static const char *fonts[]          = { "JetBrains Mono:pixelsize=25:antialias=t
 
 static const char dmenufont[]       = "monospace:size=10";
 static const char dmenuheight[]       = "100";
-static const char col_gray1[]       = "#121212";//状态栏底色
-static const char col_gray2[]       = "#121212";
-static const char col_gray3[]       = "#bbbbbb";//没有被选中的title字体颜色
-static const char col_gray4[]       = "#121212";//被选中的tile字体颜色
-static const char col_cyan[]        = "#cccccc";//title底色
+static const char col_gray1[]       = "#282828";//状态栏底色
+static const char col_gray2[]       = "#383838";//没被选中时候, 窗口的边框颜色
+static const char col_gray3[]       = "#E6E6E6";//没有被选中的title字体颜色
+static const char col_gray4[]       = "#000000";//被选中的tile字体颜色
+static const char col_cyan[]        = "#666666";//title底色
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -34,13 +34,13 @@ static const char *colors[][3]      = {
 };
 
 /* gap */
-static const unsigned int gap    = 15;
+static const unsigned int gap    = 30;
 static const unsigned int igappx = gap;        /* size of inner gaps on tile mode*/
 static const unsigned int ogappx = gap;        /* size of outer gaps on tile mode*/
 
 
 /* tagging */
-static const char *tags[] = { " ","  " ,"  " };
+static const char *tags[] = { " A "," B " ," C " };
 
 
 unsigned int isattachtail = 1;
@@ -102,15 +102,15 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_i,      setigaps,       {.i = +2 } },
-	{ MODKEY|ControlMask,           XK_i,      setigaps,       {.i = -2 } },
-	{ MODKEY|ShiftMask|ControlMask, XK_i,      setigaps,       {.i = 0  } },
-	{ MODKEY|ShiftMask,             XK_o,      setogaps,       {.i = +2 } },
-	{ MODKEY|ControlMask,           XK_o,      setogaps,       {.i = -2 } },
-	{ MODKEY|ShiftMask|ControlMask, XK_o,      setogaps,       {.i = 0  } },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+//	{ MODKEY|ShiftMask,             XK_i,      setigaps,       {.i = +2 } },
+//	{ MODKEY|ControlMask,           XK_i,      setigaps,       {.i = -2 } },
+//	{ MODKEY|ShiftMask|ControlMask, XK_i,      setigaps,       {.i = 0  } },
+//	{ MODKEY|ShiftMask,             XK_o,      setogaps,       {.i = +2 } },
+//	{ MODKEY|ControlMask,           XK_o,      setogaps,       {.i = -2 } },
+//	{ MODKEY|ShiftMask|ControlMask, XK_o,      setogaps,       {.i = 0  } },
+//	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+//	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	TILEKEYS(MODKEY,                                           1, 0, 0)
 	TILEKEYS(MODKEY|ShiftMask,                                 0, 1, 0)
